@@ -2,6 +2,7 @@
 p, and an LLM factory."""
 
 import os
+from xml.parsers.expat import model
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 
@@ -26,26 +27,26 @@ TAVILY_MAX_RESULTS: int = 5
 
 
 def require_keys() -> None:
- """Fail fast with a clear message if either API key is missing.""" 
- 
- if not GEMINI_API_KEY:
-         raise RuntimeError(
-        "GEMINI_API_KEY is not set. Copy .env.example to .env and paste "
-        "your key from https://aistudio.google.com/apikey"
-    )
-if not TAVILY_API_KEY:
-        raise RuntimeError(
-            "TAVILY_API_KEY is not set. Copy .env.example to .env and paste "
-            "your key from https://app.tavily.com"
+    """Fail fast with a clear message if either API key is missing.""" 
+
+    if not GEMINI_API_KEY:
+            raise RuntimeError(
+            "GEMINI_API_KEY is not set. Copy .env.example to .env and paste "
+            "your key from https://aistudio.google.com/apikey"
         )
+    if not TAVILY_API_KEY:
+            raise RuntimeError(
+                "TAVILY_API_KEY is not set. Copy .env.example to .env and paste "
+                "your key from https://app.tavily.com"
+            )
 
 
 def make_llm(model: str, temperature: float = 0.3):
- """Build a Gemini chat model. Lower temperature for routing, higher for prose."""
+    """Build a Gemini chat model. Lower temperature for routing, higher for prose."""
 
- return ChatGoogleGenerativeAI(
-    model=model,
-    google_api_key=GEMINI_API_KEY,
-    temperature=temperature,
- )
+    return ChatGoogleGenerativeAI(
+        model=model,
+        google_api_key=GEMINI_API_KEY,
+        temperature=temperature,
+    )
 
