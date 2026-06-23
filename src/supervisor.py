@@ -51,6 +51,7 @@ def supervisor_node(state: ContentState) -> dict:
 
 def route_decision(state: ContentState) -> str:
     """Read the supervisor's decision for the conditional edge."""
+    
     return state.get("next", "FINISH")
     
     
