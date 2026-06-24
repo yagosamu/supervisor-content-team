@@ -1,4 +1,4 @@
-"""Shared state schema. Every node reads from and writes to o ne ContentState dict."""
+"""Shared state schema. Every node reads from and writes to one ContentState dict."""
 
 import operator
 from typing import Annotated, Literal, TypedDict

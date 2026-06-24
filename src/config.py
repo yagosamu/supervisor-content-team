@@ -2,7 +2,6 @@
 p, and an LLM factory."""
 
 import os
-from xml.parsers.expat import model
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 

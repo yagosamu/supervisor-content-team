@@ -1,8 +1,6 @@
 """The four specialist nodes: researcher, writer, editor, SEO."""
 
-from email.mime import text
 import json
-from unittest import result
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_tavily import TavilySearch
 from src import state
@@ -61,9 +59,10 @@ def writer_node(state: ContentState) -> dict:
     else:
         user = f"Topic:{topic}\n\nResearch brief:\n{research}\n\nWrite the article."
         note = "writer: produced first draft"
-        draft = _ask(WRITER_PROMPT, user, temperature=0.6)
         
-        return {"draft": draft, "revision_count": revisions, "history": [note]}
+    draft = _ask(WRITER_PROMPT, user, temperature=0.6)
+        
+    return {"draft": draft, "revision_count": revisions, "history": [note]}
  
 
 def editor_node(state: ContentState) -> dict:
